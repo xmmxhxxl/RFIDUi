@@ -4,10 +4,9 @@
 # @File : login_pan.py
 # @Software : PyCharm
 from PyQt5.QtCore import pyqtSignal
-from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
 from ui.Login_pan import Ui_Form
-from windows.MysqlHelper import MysqlHelper
+from src.MysqlHelper import MysqlHelper
 from ui.regist_pan import Registpane
 
 
@@ -45,7 +44,6 @@ class LoginPane(QWidget, Ui_Form):
             # QMessageBox.information(self, 'Information', '登录成功!')
             # self.show_login_in_signal.emit()
             print('登录成功！')
-            from ui.mainWindos import MyMainWindow
 
 
         else:

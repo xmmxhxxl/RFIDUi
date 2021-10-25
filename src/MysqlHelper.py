@@ -57,11 +57,11 @@ class MysqlHelper():
         return result
 
     # 查询所有数据
-    def select_all(self, sql, params):
-        result = ()
+    def select_all(self, sql):
+        result = ''
         try:
             self.connect()
-            self.cursor.execute(sql, params)
+            self.cursor.execute(sql)
             result = self.cursor.fetchall()
             self.close()
         except Exception as ex:

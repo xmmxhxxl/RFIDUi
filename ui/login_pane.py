@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-import time
 
 from PyQt5.QtCore import pyqtSignal
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
 from ui.Login_pan import Ui_Form
-from windows.MysqlHelper import MysqlHelper
+from src.MysqlHelper import MysqlHelper
 from ui.regist_pan import Registpane
-from ui.mainWindos import MyMainWindow
+from src.mainWindos import MyMainWindow
 
 
 class LoginPane(QWidget, Ui_Form):
@@ -39,7 +38,7 @@ class LoginPane(QWidget, Ui_Form):
             helper = MysqlHelper(host='localhost', database='demomysql', user='root', password='root')
             # 执行sql语句
             ret = helper.select_one('select count(*) from demotable where user_name=%s and user_pwd=%s',
-                                         [self.name, helper.my_md5(pwd)])
+                                    [self.name, helper.my_md5(pwd)])
             print(ret)
         if ret[0] > 0:
             # QMessageBox.information(self, 'Information', '登录成功!')

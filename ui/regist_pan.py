@@ -3,7 +3,7 @@
 from PyQt5.Qt import *
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets
-from windows.MysqlHelper import MysqlHelper
+from src.MysqlHelper import MysqlHelper
 from ui.Regist_pane import Ui_Form
 
 
