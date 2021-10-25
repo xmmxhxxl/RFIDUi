@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
+import time
+
 from PyQt5.QtCore import pyqtSignal
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
 from ui.Login_pan import Ui_Form
 from windows.MysqlHelper import MysqlHelper
 from ui.regist_pan import Registpane
+from ui.mainWindos import MyMainWindow
 
 
 class LoginPane(QWidget, Ui_Form):
@@ -42,9 +45,11 @@ class LoginPane(QWidget, Ui_Form):
             # QMessageBox.information(self, 'Information', '登录成功!')
             # self.show_login_in_signal.emit()
             print('登录成功！')
-            from ui.mainWindos import MyMainWindow
-            ui = MyMainWindow()
-            ui.show()
+            # from ui.mainWindos import MyMainWindow
+            self.windows = MyMainWindow()
+            self.windows.showform(self.name)
+            self.close()
+            # time.sleep(5)
         else:
             QMessageBox.critical(self, 'Wrong', '帐号密码错误!')
             print('登录失败，请重新登录！')

@@ -41,9 +41,10 @@ class Registpane(QWidget, Ui_Form):
                     # 连接对象
                     helper = MysqlHelper(host='localhost', database='demomysql', user='root', password='root')
                     # 执行sql语句
-                    self.ret2 = helper.insert('insert into demotable(user_name, user_pwd) values(%s,%s)', [name, helper.my_md5(pwd)])
+                    self.ret2 = helper.insert('insert into demotable(user_name, user_pwd) values(%s,%s)',
+                                              [name, helper.my_md5(pwd)])
                     helper.newNserTable(name)
-                    print("re2:",self.ret2)
+                    print("re2:", self.ret2)
                 else:
                     QMessageBox.critical(self, 'Wrong', '输入的密码不一致!')
 

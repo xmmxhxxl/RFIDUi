@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="image">
-    <file>arc.png</file>
     <file>ind.png</file>
+    <file>arc.png</file>
+    <file>del.png</file>
   </qresource>
 </RCC>
