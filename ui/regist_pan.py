@@ -29,9 +29,9 @@ class Registpane(QWidget, Ui_Form):
             QMessageBox.critical(self, 'Wrong', '请输入账号!')
         else:
             # 连接对象
-            helper = MysqlHelper(host='localhost', database='demomysql', user='root', password='root')
+            helper = MysqlHelper(host='120.24.222.48', database='informationBase', user='root', password='root')
             # # 执行sql语句
-            ret1 = helper.select_one('select count(*) from demotable where user_name=%s ', name)
+            ret1 = helper.select_one('select count(*) from administrator where user_name=%s ', name)
             print(ret1)
             # print(ret1)
             if ret1[0] > 0:
@@ -39,11 +39,11 @@ class Registpane(QWidget, Ui_Form):
             else:
                 if (pwd == pwd2):
                     # 连接对象
-                    helper = MysqlHelper(host='localhost', database='demomysql', user='root', password='root')
+                    helper = MysqlHelper(host='120.24.222.48', database='informationBase', user='root', password='root')
                     # 执行sql语句
-                    self.ret2 = helper.insert('insert into demotable(user_name, user_pwd) values(%s,%s)',
+                    self.ret2 = helper.insert('insert into administrator(user_name, user_pwd) values(%s,%s)',
                                               [name, helper.my_md5(pwd)])
-                    helper.newNserTable(name)
+                    # helper.newNserTable(name)
                     print("re2:", self.ret2)
                 else:
                     QMessageBox.critical(self, 'Wrong', '输入的密码不一致!')
@@ -72,8 +72,10 @@ class Registpane(QWidget, Ui_Form):
         print("show Registration interface")
         self.form2.show()
 
+
 if __name__ == '__main__':
     import sys
+
     app = QApplication(sys.argv)
     window = Registpane()
     window.show()

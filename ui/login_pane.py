@@ -35,9 +35,9 @@ class LoginPane(QWidget, Ui_Form):
             QMessageBox.critical(self, 'Wrong', '请输入账号!')
         else:
             # 连接对象
-            helper = MysqlHelper(host='localhost', database='demomysql', user='root', password='root')
+            helper = MysqlHelper(host='120.24.222.48',database='informationBase',user='root',password='root')
             # 执行sql语句
-            ret = helper.select_one('select count(*) from demotable where user_name=%s and user_pwd=%s',
+            ret = helper.select_one('select count(*) from administrator where user_name=%s and user_pwd=%s',
                                     [self.name, helper.my_md5(pwd)])
             print(ret)
         if ret[0] > 0:

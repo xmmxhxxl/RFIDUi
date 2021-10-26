@@ -30,7 +30,7 @@ class serialclass():
         try:
             print("等待数据接收")
             while True:
-                data = self.ser.read(self.ser.in_waiting).decode('gbk')
+                data = self.ser.read(self.ser.in_waiting)
                 if data != '':
                     break
             print("已经接收数据:", data)
@@ -52,5 +52,6 @@ if __name__ == '__main__':
     ser = serialclass()
     ser.open_ser()
     # ser.send_msg()
-    # ser.read_msg()
+    while 1:
+        ser.read_msg()
     # ser.close_ser()

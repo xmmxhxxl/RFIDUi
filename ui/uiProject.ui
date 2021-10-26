@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
-    <height>481</height>
+    <width>962</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,7 +46,7 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>301</width>
+     <width>151</width>
      <height>41</height>
     </rect>
    </property>
@@ -59,7 +59,7 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>700</x>
      <y>40</y>
      <width>231</width>
      <height>41</height>
@@ -163,8 +163,8 @@
     <rect>
      <x>10</x>
      <y>210</y>
-     <width>541</width>
-     <height>261</height>
+     <width>941</width>
+     <height>481</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -174,16 +174,27 @@
    </property>
    <column>
     <property name="text">
+     <string>学号</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>姓名</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>班级</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>人脸数据</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
      <string>卡号</string>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="textAlignment">
-     <set>AlignHCenter|AlignBottom</set>
     </property>
    </column>
    <column>
@@ -239,7 +250,7 @@
     <rect>
      <x>10</x>
      <y>120</y>
-     <width>301</width>
+     <width>211</width>
      <height>41</height>
     </rect>
    </property>
@@ -252,7 +263,7 @@
   <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>700</x>
      <y>120</y>
      <width>231</width>
      <height>41</height>
@@ -326,7 +337,139 @@
     </item>
    </layout>
   </widget>
+  <widget class="QTextEdit" name="stu_num">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>40</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	border-radius: 10px;  
+ 	border: 2px groove white;
+	font: 14pt &quot;宋体&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="name">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>40</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	border-radius: 10px;  
+ 	border: 2px groove white;
+	font: 14pt &quot;宋体&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="classes">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>40</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	border-radius: 10px;  
+ 	border: 2px groove white;
+	font: 14pt &quot;宋体&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="stu_numtext">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>10</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>学号</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="name_text">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>10</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>姓名</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="class_text">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>10</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>班级</string>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>priceArea_2</tabstop>
+  <tabstop>stu_num</tabstop>
+  <tabstop>name</tabstop>
+  <tabstop>classes</tabstop>
+  <tabstop>priceButton_3</tabstop>
+  <tabstop>priceButton_2</tabstop>
+  <tabstop>priceArea_3</tabstop>
+  <tabstop>priceButton_4</tabstop>
+  <tabstop>priceButton_5</tabstop>
+  <tabstop>tableWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="image.qrc"/>
  </resources>
