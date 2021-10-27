@@ -29,7 +29,7 @@ class Registpane(QWidget, Ui_Form):
             QMessageBox.critical(self, 'Wrong', '请输入账号!')
         else:
             # 连接对象
-            helper = MysqlHelper(host='120.24.222.48', database='informationBase', user='root', password='root')
+            helper = MysqlHelper(host='120.24.222.48', database='informatioBase', user='root', password='root')
             # # 执行sql语句
             ret1 = helper.select_one('select count(*) from administrator where user_name=%s ', name)
             print(ret1)
@@ -39,7 +39,7 @@ class Registpane(QWidget, Ui_Form):
             else:
                 if (pwd == pwd2):
                     # 连接对象
-                    helper = MysqlHelper(host='120.24.222.48', database='informationBase', user='root', password='root')
+                    helper = MysqlHelper(host='120.24.222.48', database='informatioBase', user='root', password='root')
                     # 执行sql语句
                     self.ret2 = helper.insert('insert into administrator(user_name, user_pwd) values(%s,%s)',
                                               [name, helper.my_md5(pwd)])

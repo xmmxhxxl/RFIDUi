@@ -5,6 +5,8 @@
 # @Software : PyCharm
 import serial
 import time
+import string
+import binascii
 
 
 class serialclass():
@@ -28,12 +30,24 @@ class serialclass():
 
     def read_msg(self):
         try:
-            print("等待数据接收")
+            s = serial.Serial('com9', 11520)
             while True:
-                data = self.ser.read(self.ser.in_waiting)
-                if data != '':
+
+                # s.open()
+                n = s.inWaiting()
+                if n:
+                    # print(str(binascii.b2a_hex(s.read(n))))
+                    # data = str(binascii.b2a_hex(s.read(n)))[2:-1]
+                    data = n.read()
+                    print(data)
                     break
-            print("已经接收数据:", data)
+                # print("等待数据接收")
+                # while True:
+                #     data = self.ser.read_all().decode()
+                #     # print(data)
+                #     if data != '':
+                #         break
+                # print("已经接收数据:", data, type(data))
         except Exception as ex:
             print("读取异常", ex)
 
@@ -50,8 +64,7 @@ class serialclass():
 
 if __name__ == '__main__':
     ser = serialclass()
-    ser.open_ser()
+    # ser.open_ser()
     # ser.send_msg()
-    while 1:
-        ser.read_msg()
+    ser.read_msg()
     # ser.close_ser()

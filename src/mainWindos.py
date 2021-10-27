@@ -7,7 +7,6 @@ import time
 
 from PyQt5.QtGui import *
 from PyQt5.uic.properties import QtWidgets
-from src.testserial import serialclass
 from ui.uiProject import Ui_Form
 from PyQt5.Qt import *
 from PyQt5 import QtWidgets, QtCore
@@ -26,7 +25,7 @@ class MyMainWindow(QWidget, Ui_Form):
         self.priceButton_5.clicked.connect(self.delID)  # 删除卡的信号槽
         self.priceButton_3.clicked.connect(self.identifyID)  # 自动查找卡号信号槽
 
-        self.helper = MysqlHelper(host='120.24.222.48', database='informationBase', user='root', password='root')
+        self.helper = MysqlHelper(host='120.24.222.48', database='informatioBase', user='root', password='root')
         self.showtable()
 
     def showtable(self):
