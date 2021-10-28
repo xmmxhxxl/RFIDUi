@@ -16,46 +16,6 @@
   <property name="styleSheet">
    <string notr="true">	/*background-color:rgb(220, 220, 220);</string>
   </property>
-  <widget class="QLabel" name="price">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>121</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>宋体</family>
-     <pointsize>14</pointsize>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>卡号</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="priceArea_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>151</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	border-radius: 10px;  
- 	border: 2px groove white;
-	font: 14pt &quot;宋体&quot;;</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
@@ -340,7 +300,7 @@
   <widget class="QTextEdit" name="stu_num">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>10</x>
      <y>40</y>
      <width>151</width>
      <height>41</height>
@@ -355,7 +315,7 @@
   <widget class="QTextEdit" name="name">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>180</x>
      <y>40</y>
      <width>151</width>
      <height>41</height>
@@ -370,7 +330,7 @@
   <widget class="QTextEdit" name="classes">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>350</x>
      <y>40</y>
      <width>151</width>
      <height>41</height>
@@ -388,7 +348,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>10</x>
      <y>10</y>
      <width>121</width>
      <height>24</height>
@@ -413,7 +373,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>190</x>
      <y>10</y>
      <width>121</width>
      <height>24</height>
@@ -438,7 +398,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>530</x>
+     <x>360</x>
      <y>10</y>
      <width>121</width>
      <height>24</height>
@@ -457,9 +417,48 @@
     <string>班级</string>
    </property>
   </widget>
+  <widget class="QTextEdit" name="priceArea_2">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>40</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	border-radius: 10px;  
+ 	border: 2px groove white;
+	font: 14pt &quot;宋体&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="price">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>10</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>卡号</string>
+   </property>
+  </widget>
  </widget>
  <tabstops>
-  <tabstop>priceArea_2</tabstop>
   <tabstop>stu_num</tabstop>
   <tabstop>name</tabstop>
   <tabstop>classes</tabstop>

@@ -60,16 +60,16 @@ class MysqlHelper():
         try:
             self.connect()
             self.cursor.execute(sql)
-            # fout = open('image.png', 'wb')
-            # fout.write(self.cursor.fetchone()[0])
-            # fout.close()
-            self.image = self.cursor.fetchone()[0]
-            self.cursor.close()
-            self.conn.close()
-        except IOError as e:
-            print("Error %d: %s" % (e.args[0], e.args[1]))
-            sys.exit(1)
-        return self.image
+            result = self.cursor.fetchone()[0]
+            # self.cursor.close()
+            # self.conn.close()
+            # print(result)
+            self.close()
+        except Exception as ex:
+            # print("Error %d: %s" % (e.args[0], e.args[1]))
+            # sys.exit(1)
+            print("图片读取失败！", ex)
+        return result
 
     # 查询一条数据
     def select_one(self, sql, params=[]):

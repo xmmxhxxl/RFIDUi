@@ -1,16 +1,20 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from ui.userui import Ui_Form
+from PyQt5.QtCore import pyqtSignal
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
 
 
-# Press the green button in the gutter to run the script.
+class usein(QWidget, Ui_Form):
+
+    def __init__(self):
+        super(usein, self).__init__()
+        self.setupUi(self)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    import sys
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app = QApplication(sys.argv)
+    window = usein()
+    window.show()
+    sys.exit(app.exec_())
