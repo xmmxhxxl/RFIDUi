@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys
+
 import pymysql
 import hashlib
 import time
@@ -42,7 +44,32 @@ class MysqlHelper():
             self.conn.commit()
             self.close()
         except Exception as e:
-            print("数据表创建失败{}".format(usetable),e)
+            print("数据表创建失败{}".format(usetable), e)
+
+    def insterImgae(self, sql, image):
+        try:
+            self.connect()
+            self.cursor.execute(sql, image)
+            self.conn.commit()
+            self.cursor.close()
+            self.conn.close()
+        except Exception as ex:
+            print("人脸数据插入异常！", ex)
+
+    def readImage(self, sql):
+        try:
+            self.connect()
+            self.cursor.execute(sql)
+            # fout = open('image.png', 'wb')
+            # fout.write(self.cursor.fetchone()[0])
+            # fout.close()
+            self.image = self.cursor.fetchone()[0]
+            self.cursor.close()
+            self.conn.close()
+        except IOError as e:
+            print("Error %d: %s" % (e.args[0], e.args[1]))
+            sys.exit(1)
+        return self.image
 
     # 查询一条数据
     def select_one(self, sql, params=[]):

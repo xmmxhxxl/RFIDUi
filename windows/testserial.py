@@ -12,7 +12,7 @@ import binascii
 class serialclass():
 
     def open_ser(self):
-        port = 'com9'  # 串口号
+        port = 'com8'  # 串口号
         baudrate = 115200
         try:
             self.ser = serial.Serial(port, baudrate, timeout=5)
@@ -27,29 +27,31 @@ class serialclass():
             print("数据已发送", send_data)
         except Exception as ex:
             print("发送异常", ex)
+        # while True:
+        #     data = self.ser.read_all().decode()
+        #     # print(data)
+        #     if data != '':
+        #         break
+        # print("已经接收数据:", data, type(data))
 
     def read_msg(self):
-        try:
-            s = serial.Serial('com9', 11520)
+        # try:
+            self.datalist = list()
+            s = serial.Serial('com8', 115200)
+            time.sleep(3)
             while True:
-
-                # s.open()
-                n = s.inWaiting()
-                if n:
-                    # print(str(binascii.b2a_hex(s.read(n))))
-                    # data = str(binascii.b2a_hex(s.read(n)))[2:-1]
-                    data = n.read()
-                    print(data)
-                    break
+                if s.in_waiting:
+                    print("dkai")
+                    data = s.read()
+                    self.datalist = list(data.hex)
+                    print(self.datalist)
+                    print('11')
+                # else:
+                #     s.close()
+                #     break
                 # print("等待数据接收")
-                # while True:
-                #     data = self.ser.read_all().decode()
-                #     # print(data)
-                #     if data != '':
-                #         break
-                # print("已经接收数据:", data, type(data))
-        except Exception as ex:
-            print("读取异常", ex)
+        # except Exception as ex:
+        #     print("读取异常", ex)
 
     def close_ser(self):
         try:
