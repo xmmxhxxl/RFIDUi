@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="image">
+    <file>oepnf.png</file>
+    <file>refresh.png</file>
+    <file>compare.png</file>
+    <file>renovate.png</file>
     <file>ind.png</file>
     <file>arc.png</file>
     <file>del.png</file>

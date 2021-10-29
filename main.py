@@ -1,4 +1,4 @@
-from ui.userui import Ui_Form
+from ui.useInterface import Ui_Form
 from PyQt5.QtCore import pyqtSignal
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
