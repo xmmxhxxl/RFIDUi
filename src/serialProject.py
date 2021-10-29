@@ -1,7 +1,7 @@
 # -*- codeing = utf-8 -*-
-# @Time : 2021/10/23 11:44
+# @Time : 2021/10/29 14:22
 # @Author : liman
-# @File : testserial.py
+# @File : serialProject.py
 # @Software : PyCharm
 import serial
 from time import sleep
@@ -39,8 +39,4 @@ class SerialRead():
                 if data == b'x':
                     print("exit")
                     break
-
-
-if __name__ == '__main__':
-    ser = SerialRead('com13', 115200)
-    ser.read()
+        return data
