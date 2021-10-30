@@ -163,13 +163,35 @@ class Ui_Form(object):
         self.openface_but.setSizePolicy(sizePolicy)
         self.openface_but.setMinimumSize(QtCore.QSize(0, 0))
         self.openface_but.setMaximumSize(QtCore.QSize(150, 40))
-        self.openface_but.setStyleSheet("    border-radius: 10px;  \n"
+        self.openface_but.setStyleSheet("    /*border-radius: 10px;  \n"
 "     border: 2px groove white;\n"
 "    background-color:rgb(229, 229, 229);\n"
+"*/\n"
+"QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}\n"
+"\n"
 "")
+        self.openface_but.setToolTip("打开文件")
         self.openface_but.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/image/oepnf.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/image/open_fw.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.openface_but.setIcon(icon)
         self.openface_but.setObjectName("openface_but")
         self.confirm_but = QtWidgets.QPushButton(Form)
@@ -180,12 +202,29 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.confirm_but.sizePolicy().hasHeightForWidth())
         self.confirm_but.setSizePolicy(sizePolicy)
         self.confirm_but.setMaximumSize(QtCore.QSize(150, 40))
-        self.confirm_but.setStyleSheet("    border-radius: 10px;  \n"
-"     border: 2px groove white;\n"
-"    background-color:rgb(229, 229, 229);")
+        self.confirm_but.setStyleSheet("QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}")
+        self.confirm_but.setToolTip("请确认信息无误!")
         self.confirm_but.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/image/arc.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/image/quren.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.confirm_but.setIcon(icon1)
         self.confirm_but.setObjectName("confirm_but")
         self.renovate_but = QtWidgets.QPushButton(Form)
@@ -197,13 +236,35 @@ class Ui_Form(object):
         self.renovate_but.setSizePolicy(sizePolicy)
         self.renovate_but.setMinimumSize(QtCore.QSize(0, 0))
         self.renovate_but.setMaximumSize(QtCore.QSize(150, 40))
-        self.renovate_but.setStyleSheet("    border-radius: 10px;  \n"
+        self.renovate_but.setStyleSheet("    /*border-radius: 10px;  \n"
 "     border: 2px groove white;\n"
 "    background-color:rgb(229, 229, 229);\n"
+"*/\n"
+"QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}\n"
+"\n"
 "")
+        self.renovate_but.setToolTip("刷新")
         self.renovate_but.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/image/refresh.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/image/refresh_w.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.renovate_but.setIcon(icon2)
         self.renovate_but.setObjectName("renovate_but")
         self.del_but = QtWidgets.QPushButton(Form)
@@ -214,14 +275,32 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.del_but.sizePolicy().hasHeightForWidth())
         self.del_but.setSizePolicy(sizePolicy)
         self.del_but.setMaximumSize(QtCore.QSize(150, 40))
-        self.del_but.setStyleSheet("    border-radius: 10px;  \n"
-"     border: 2px groove white;\n"
-"    background-color:rgb(229, 229, 229);")
+        self.del_but.setStyleSheet("QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}")
+        self.del_but.setToolTip("删除后不可撤销!")
         self.del_but.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/image/del.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/image/del_w.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.del_but.setIcon(icon3)
         self.del_but.setObjectName("del_but")
+
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         self.retranslateUi(Form)

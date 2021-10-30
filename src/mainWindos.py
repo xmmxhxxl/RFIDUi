@@ -57,21 +57,31 @@ class MyMainWindow(QWidget, Ui_Form):
     #   刷新表单数据
     def showtable(self, select_all):
         try:
+            i = 0
             self.line = 0
-            # self.select_all = self.helper.select_all('select * from informaTable')
-            # print("数据表的所有数据是:{}".format(self.select_all))
             self.select_all = select_all
             for item in self.select_all:
+                face_pic = QLabel()
+                image = item[3]
+                # print(self.image)
+                fout = open('../faceID/img/mysqlface{}.png'.format(i), 'wb')
+                fout.write(image)
+                fout.close()
+                face_pic.setPixmap(QPixmap('../faceID/img/mysqlface{}.png'.format(i)))  # 获取图片路径
+
                 print(item[0], item[1], item[2], item[4], item[5], item[6])
                 self.tableWidget.insertRow(self.line)
                 self.tableWidget.setItem(self.line, 0, QTableWidgetItem(str(item[0])))
                 self.tableWidget.setItem(self.line, 1, QTableWidgetItem(item[1]))
                 self.tableWidget.setItem(self.line, 2, QTableWidgetItem(item[2]))
-                self.tableWidget.setItem(self.line, 3, QTableWidgetItem(item[1]))
+                self.tableWidget.setCellWidget(self.line, 3, face_pic)
+                print(i)
                 self.tableWidget.setItem(self.line, 4, QTableWidgetItem(item[4]))
                 self.tableWidget.setItem(self.line, 5, QTableWidgetItem(item[6]))
                 self.tableWidget.setItem(self.line, 6, QTableWidgetItem(item[5]))
+                i += 1
             QApplication.processEvents()  # 刷新表单数据
+            i = 0
         except Exception as ex:
             print("显示数据异常! 位置:MyMainWindow->showtable", ex)
 
@@ -119,7 +129,6 @@ class MyMainWindow(QWidget, Ui_Form):
             self.stunum = self.stu_num.toPlainText()  # 获取学号
             self.stuname = self.name.toPlainText()  # 获取姓名
             self.stuclass = self.classes.toPlainText()  # 获取班级信息
-
             # 获取信息之后清空label
             self.sut_id.clear()
             self.stu_num.clear()
@@ -277,7 +286,7 @@ class ReadID(QThread):
                     sleep(0.02)
             return dataid
         except Exception as ex:
-            print("读取卡号异常! 位置:ReadID->rec", ex)
+            print("读取卡号异常! 位置:ReadID->rec 异常信息->{}".format(ex))
 
     def run(self):
         try:
@@ -295,7 +304,8 @@ class ReadID(QThread):
                         break
                 self._sinid.emit()
         except Exception as ex:
-            print("解码异常! 位置:ReadID->run")
+            print("解码异常! 位置:ReadID->run 异常信息->{}".format(ex))
+
 
 if __name__ == '__main__':
     import sys

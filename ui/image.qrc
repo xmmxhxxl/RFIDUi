@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="image">
+    <file>del_w.png</file>
+    <file>open_fw.png</file>
+    <file>quren.png</file>
+    <file>refresh_w.png</file>
     <file>oepnf.png</file>
     <file>refresh.png</file>
     <file>compare.png</file>

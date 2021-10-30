@@ -34,9 +34,31 @@ class Ui_Form(object):
         font.setFamily("Consolas")
         font.setPointSize(18)
         self.btn_regist.setFont(font)
-        self.btn_regist.setStyleSheet("border-radius: 10px;  \n"
-"border: 2px groove white;\n"
-"background-color:rgb(229, 229, 229);")
+        self.btn_regist.setStyleSheet("    /*border-radius: 10px;  \n"
+"     border: 2px groove white;\n"
+"    background-color:rgb(229, 229, 229);\n"
+"*/\n"
+"QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}\n"
+"\n"
+"")
         self.btn_regist.setObjectName("btn_regist")
         self.horizontalLayout.addWidget(self.btn_regist)
         self.btn_exit = QtWidgets.QPushButton(self.layoutWidget)
@@ -44,9 +66,31 @@ class Ui_Form(object):
         font.setFamily("Consolas")
         font.setPointSize(18)
         self.btn_exit.setFont(font)
-        self.btn_exit.setStyleSheet("border-radius: 10px;  \n"
-"border: 2px groove white;\n"
-"background-color:rgb(229, 229, 229);")
+        self.btn_exit.setStyleSheet("    /*border-radius: 10px;  \n"
+"     border: 2px groove white;\n"
+"    background-color:rgb(229, 229, 229);\n"
+"*/\n"
+"QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}\n"
+"\n"
+"")
         self.btn_exit.setObjectName("btn_exit")
         self.horizontalLayout.addWidget(self.btn_exit)
         self.layoutWidget1 = QtWidgets.QWidget(Form)

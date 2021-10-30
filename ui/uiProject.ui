@@ -356,9 +356,30 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">	border-radius: 10px;  
+    <string notr="true">	/*border-radius: 10px;  
  	border: 2px groove white;
 	background-color:rgb(229, 229, 229);
+*/
+QPushButton
+{
+    font-family:Microsoft Yahei;
+    color:white;
+    background-color:rgb(79, 125, 163);
+    border-radius:5px;
+}
+
+QPushButton:hover
+{
+    background-color:rgb(127, 161, 190);
+}
+
+QPushButton:pressed
+{
+    background-color:rgb(14 , 135 , 228);
+    padding-left:3px;
+    padding-top:3px;
+}
+
 </string>
    </property>
    <property name="text">
@@ -366,7 +387,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <disabledoff>:/image/oepnf.png</disabledoff>
+     <disabledoff>:/image/open_fw.png</disabledoff>
     </iconset>
    </property>
   </widget>
@@ -392,16 +413,32 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">	border-radius: 10px;  
- 	border: 2px groove white;
-	background-color:rgb(229, 229, 229);</string>
+    <string notr="true">QPushButton
+{
+    font-family:Microsoft Yahei;
+    color:white;
+    background-color:rgb(79, 125, 163);
+    border-radius:5px;
+}
+
+QPushButton:hover
+{
+    background-color:rgb(127, 161, 190);
+}
+
+QPushButton:pressed
+{
+    background-color:rgb(14 , 135 , 228);
+    padding-left:3px;
+    padding-top:3px;
+}</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="icon">
     <iconset>
-     <disabledoff>:/image/arc.png</disabledoff>
+     <disabledoff>:/image/quren.png</disabledoff>
     </iconset>
    </property>
   </widget>
@@ -433,9 +470,30 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">	border-radius: 10px;  
+    <string notr="true">	/*border-radius: 10px;  
  	border: 2px groove white;
 	background-color:rgb(229, 229, 229);
+*/
+QPushButton
+{
+    font-family:Microsoft Yahei;
+    color:white;
+    background-color:rgb(79, 125, 163);
+    border-radius:5px;
+}
+
+QPushButton:hover
+{
+    background-color:rgb(127, 161, 190);
+}
+
+QPushButton:pressed
+{
+    background-color:rgb(14 , 135 , 228);
+    padding-left:3px;
+    padding-top:3px;
+}
+
 </string>
    </property>
    <property name="text">
@@ -443,7 +501,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <disabledoff>:/image/refresh.png</disabledoff>
+     <disabledoff>:/image/refresh_w.png</disabledoff>
     </iconset>
    </property>
   </widget>
@@ -469,16 +527,32 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">	border-radius: 10px;  
- 	border: 2px groove white;
-	background-color:rgb(229, 229, 229);</string>
+    <string notr="true">QPushButton
+{
+    font-family:Microsoft Yahei;
+    color:white;
+    background-color:rgb(79, 125, 163);
+    border-radius:5px;
+}
+
+QPushButton:hover
+{
+    background-color:rgb(127, 161, 190);
+}
+
+QPushButton:pressed
+{
+    background-color:rgb(14 , 135 , 228);
+    padding-left:3px;
+    padding-top:3px;
+}</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="icon">
     <iconset>
-     <disabledoff>:/image/del.png</disabledoff>
+     <disabledoff>:/image/del_w.png</disabledoff>
     </iconset>
    </property>
   </widget>
