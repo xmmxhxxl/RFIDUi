@@ -43,8 +43,8 @@ class MyMainWindow(QWidget, Ui_Form):
         self.readid.start()
 
         # 多线程打开文件，防止卡顿
-        # self.openface = ReadFace()
-        # self.openface.readSin.connect(self.seekID)
+        self.openface = ReadFace()
+        self.openface.readSin.connect(self.seekID)
         # self.openface.start()
         # self.insertCount = 0
 
@@ -52,36 +52,43 @@ class MyMainWindow(QWidget, Ui_Form):
         self.showMain = showMainWindos()
         self.showMain.showSin.connect(self.showtable)
         self.count = 0
-        self.showMain.start()
 
     #   刷新表单数据
     def showtable(self, select_all):
         try:
+            global i
             i = 0
             self.line = 0
             self.select_all = select_all
-            for item in self.select_all:
-                face_pic = QLabel()
-                image = item[3]
-                # print(self.image)
-                fout = open('../faceID/img/mysqlface{}.png'.format(i), 'wb')
-                fout.write(image)
-                fout.close()
-                face_pic.setPixmap(QPixmap('../faceID/img/mysqlface{}.png'.format(i)))  # 获取图片路径
+            # print(self.select_all)
+            row = self.tableWidget.rowCount()
+            for i in range(row):
+                self.tableWidget.removeRow(i)
 
-                print(item[0], item[1], item[2], item[4], item[5], item[6])
-                self.tableWidget.insertRow(self.line)
-                self.tableWidget.setItem(self.line, 0, QTableWidgetItem(str(item[0])))
-                self.tableWidget.setItem(self.line, 1, QTableWidgetItem(item[1]))
-                self.tableWidget.setItem(self.line, 2, QTableWidgetItem(item[2]))
-                self.tableWidget.setCellWidget(self.line, 3, face_pic)
-                print(i)
-                self.tableWidget.setItem(self.line, 4, QTableWidgetItem(item[4]))
-                self.tableWidget.setItem(self.line, 5, QTableWidgetItem(item[6]))
-                self.tableWidget.setItem(self.line, 6, QTableWidgetItem(item[5]))
-                i += 1
+            if self.select_all:
+                for item in self.select_all:
+                    face_pic = QLabel()
+                    image = item[3]
+                    # print(self.image)
+                    fout = open('../faceID/img/mysqlface{}.png'.format(i), 'wb')
+                    fout.write(image)
+                    fout.close()
+                    face_pic.setPixmap(QPixmap('../faceID/img/mysqlface{}.png'.format(i)))  # 获取图片路径
+
+                    print(item[0], item[1], item[2], item[4], item[5], item[6])
+                    self.tableWidget.insertRow(self.line)
+                    self.tableWidget.setItem(self.line, 0, QTableWidgetItem(str(item[0])))
+                    self.tableWidget.setItem(self.line, 1, QTableWidgetItem(item[1]))
+                    self.tableWidget.setItem(self.line, 2, QTableWidgetItem(item[2]))
+                    self.tableWidget.setCellWidget(self.line, 3, face_pic)
+                    self.tableWidget.setItem(self.line, 4, QTableWidgetItem(item[4]))
+                    self.tableWidget.setItem(self.line, 5, QTableWidgetItem(item[6]))
+                    self.tableWidget.setItem(self.line, 6, QTableWidgetItem(item[5]))
+                    i += 1
+                i = 0
+            else:
+                QMessageBox.critical(self, 'Wrong', '没有数据!')
             QApplication.processEvents()  # 刷新表单数据
-            i = 0
         except Exception as ex:
             print("显示数据异常! 位置:MyMainWindow->showtable", ex)
 
@@ -106,8 +113,9 @@ class MyMainWindow(QWidget, Ui_Form):
         try:
             self.count += 1
             if self.count == 1:
-                self.showMain.runShow = 1
+                # self.showMain.runShow = 1
                 self.count = 0
+                self.showMain.start()
         except Exception as ex:
             print("查询数据库异常! 位置:MyMainWindow->queryIfon", ex)
 
@@ -130,10 +138,6 @@ class MyMainWindow(QWidget, Ui_Form):
             self.stuname = self.name.toPlainText()  # 获取姓名
             self.stuclass = self.classes.toPlainText()  # 获取班级信息
             # 获取信息之后清空label
-            self.sut_id.clear()
-            self.stu_num.clear()
-            self.name.clear()
-            self.classes.clear()
 
             self.stu_info = self.faceDirIfon
             self.face_pic = QLabel()
@@ -171,7 +175,12 @@ class MyMainWindow(QWidget, Ui_Form):
                                                                                    self.ID,
                                                                                    self.time,
                                                                                    self.usename])
+                self.sut_id.clear()
+                self.stu_num.clear()
+                self.name.clear()
+                self.classes.clear()
         except Exception as ex:
+            QMessageBox.critical(self, 'Wrong', '请输入完整的信息!')
             print("卡号插入异常! 位置:MyMainWindow->seekID! 异常信息:{}".format(ex))
 
     def identifyID(self):
@@ -185,18 +194,6 @@ class MyMainWindow(QWidget, Ui_Form):
         except Exception as ex:
             print("图片保存异常! 位置:MyMainWindow->identifyID 异常信息->{}".format(ex))
 
-    # 人脸比对
-    def _faceComparison(self):
-        try:
-            with open("../ui/image.png", 'rb') as f:
-                facef = f.read()
-            with open("../ui/face.png", 'rb') as f:
-                faces = f.read()
-            self.face = Face(facef=facef, faces=faces)
-            self.face.get_img()
-            self.face.result()
-        except Exception as ex:
-            print("人脸比对异常! 位置:MyMainWindow->_faceComparison 异常信息:{}".format(ex))
 
     def delID(self):
         try:
@@ -210,8 +207,10 @@ class MyMainWindow(QWidget, Ui_Form):
             row = item[0].row()  # 获取数据所在的行号
             print(row)
             self.tableWidget.removeRow(row)  # 删除对应数据所在的行
+            self.priceArea_3.clear()
             QApplication.processEvents()  # 刷新表单数据
         except Exception as ex:
+            QMessageBox.critical(self, 'Wrong', '请输入正确的学号!')
             print("删除数据异常! 位置:MyMainWindow->delID 异常信息:{}".format(ex))
 
     def showform(self, usename):
@@ -230,14 +229,12 @@ class ReadFace(QThread):
 
     def run(self):
         try:
-            while True:
-                if self.runRead:
-                    print("读取文件!")
-                    fb = open('../faceID/img/ScreeFace.png', 'rb')
-                    self.face = fb.read()
-                    fb.close()
-                    self.readSin.emit(self.face)
-                    self.runRead = 0
+            print("读取文件!")
+            fb = open('../faceID/img/ScreeFace.png', 'rb')
+            self.face = fb.read()
+            fb.close()
+            self.readSin.emit(self.face)
+            self.runRead = 0
         except Exception as ex:
             print("读取文件异常! 位置:ReadFace->run 异常信息:{}".format(ex))
 
@@ -251,15 +248,11 @@ class showMainWindos(QThread):
         self.runShow = 0
         self.helper = MysqlHelper(host='120.24.222.48', database='informatioBase', user='root',
                                   password='root')  # 链接数据库
-
     def run(self):
         try:
             print("进入查询线程")
-            while True:
-                if self.runShow:
-                    self.select_all = self.helper.select_all('select * from informaTable')
-                    self.showSin.emit(self.select_all)
-                    self.runShow = 0
+            self.select_all = self.helper.select_all('select * from informaTable')
+            self.showSin.emit(self.select_all)
         except Exception as ex:
             print("查询数据库线程异常! 位置:showMainWindos->run 异常信息:{}".format(ex))
 

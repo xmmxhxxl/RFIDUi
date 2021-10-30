@@ -24,12 +24,29 @@ class Ui_Form(object):
         self.label.setObjectName("label")
         self.priceButton_2 = QtWidgets.QPushButton(Form)
         self.priceButton_2.setGeometry(QtCore.QRect(570, 430, 191, 61))
-        self.priceButton_2.setStyleSheet("    border-radius: 10px;  \n"
-"     border: 2px groove white;\n"
-"    background-color:rgb(229, 229, 229);")
+        self.priceButton_2.setStyleSheet("QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}")
+        self.priceButton_2.setToolTip("单击确认,双击提交!")
         self.priceButton_2.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/image/arc.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/image/quren.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.priceButton_2.setIcon(icon)
         self.priceButton_2.setObjectName("priceButton_2")
         self.widget = QtWidgets.QWidget(Form)

@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QHeaderView
+from PyQt5.QtWidgets import QHeaderView, QAbstractItemView
 
 
 class Ui_Form(object):
@@ -302,6 +302,8 @@ class Ui_Form(object):
         self.del_but.setObjectName("del_but")
 
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)

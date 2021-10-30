@@ -45,7 +45,16 @@ class UseBinData(QWidget, Ui_Form):
         # 多线程打开文件,防止卡顿
         self.openface = ReadFace()
         self.openface.readSin.connect(self.insertInformation)
-        self.openface.start()
+        # self.openface.start()
+
+    # 返回查找结果
+    def finResult(self):
+        self.idlist = []
+        self.select_all = self.msq.select_all('select stu_num from informaTable')
+        for item in self.select_all:
+            self.idlist.append(item[0])
+            # print(item[0])
+        return self.idlist
 
     def showimage(self):
         QApplication.processEvents()
@@ -55,11 +64,13 @@ class UseBinData(QWidget, Ui_Form):
         try:
             self.count += 1
             self.thread.playFlag = 0
+            # self.openface.runRead = 0
             cv.imwrite('../faceID/img/ScreeFace.png', self.thread.image)
             if self.count == 2:
                 self.thread.playFlag = 1
                 self.count = 0
                 self.openface.runRead = 1  # 读取文件
+                self.openface.start()
         except Exception as ex:
             print("截图异常！位置:UseBinData->Screenshot!", ex)
 
@@ -78,21 +89,30 @@ class UseBinData(QWidget, Ui_Form):
             self.name = self.stu_name.toPlainText()  # 获取姓名
             self.stuclass = self.stu_class.toPlainText()  # 获取班级
             self.id = self.stu_id.toPlainText()  # 获取卡号
-            self.time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())  # 格式化获取当前时间
-            self.user = "用户自助绑定"
-            self.stu_id.clear()
-            self.stu_num.clear()
-            self.stu_class.clear()
-            self.stu_name.clear()
-            print(self.number, self.name, self.stuclass, self.id)
-            QApplication.processEvents()
-            # print(faceID)
-            # 插入数据到数据库中
-            self.msq.insert('insert into informaTable(stu_num,stu_name,stu_class,stu_info,stu_id,add_time,'
-                            'administrator) values(%s,%s,%s,%s,%s,%s,%s)',
-                            [self.number, self.name, self.stuclass, faceID, self.id, self.time, self.user])
-            print("数据插入成功!")
-            self.openface.runRead = 0  # 停止读取
+            if self.name == '' or self.number == '' or self.stuclass == '' or self.id == '':
+                QMessageBox.critical(self, 'Wrong', '请输入正确的信息!')
+            else:
+                idresult = self.finResult()
+                print("查询结果", idresult)
+                if self.number in idresult:
+                    QMessageBox.critical(self, 'Wrong', '该学号已绑定!')
+                else:
+                    self.time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())  # 格式化获取当前时间
+                    self.user = "用户自助绑定"
+                    self.stu_id.clear()
+                    self.stu_num.clear()
+                    self.stu_class.clear()
+                    self.stu_name.clear()
+                    print(self.number, self.name, self.stuclass, self.id)
+                    QApplication.processEvents()
+                    # print(faceID)
+                    # 插入数据到数据库中
+                    self.msq.insert('insert into informaTable(stu_num,stu_name,stu_class,stu_info,stu_id,add_time,'
+                                    'administrator) values(%s,%s,%s,%s,%s,%s,%s)',
+                                    [self.number, self.name, self.stuclass, faceID, self.id, self.time, self.user])
+                    print("数据插入成功!")
+                    QMessageBox.information(self, 'Right', '绑定成功!')
+                    self.openface.runRead = 0  # 停止读取
         except Exception as ex:
             print("插入数据库异常! 位置:UseBinData->insertInformation", ex)
 
@@ -129,7 +149,10 @@ class ReadID(QThread):
 
     def __init__(self, parent=None):
         super(QThread, self).__init__(parent)
-        self.ser = self.ser = serial.Serial("com13", 115200, timeout=0.5)
+        try:
+            self.ser = self.ser = serial.Serial("com13", 115200, timeout=0.5)
+        except Exception as ex:
+            print("获取视频流异常!位置:ReadID->__init__", ex)
 
     def rec(self, ser):
         try:
@@ -167,21 +190,17 @@ class ReadID(QThread):
 class ReadFace(QThread):
     readSin = pyqtSignal(object)
 
-    def __init__(self, parent=None):
-        super(QThread, self).__init__(parent)
+    def __init__(self):
+        super(ReadFace, self).__init__()
         self.runRead = 0  # 控制线程
 
     def run(self):
         try:
-            self.face = '1'
-            while self.face is not None:
-                if self.runRead:
-                    print("读取文件!")
-                    fb = open('../faceID/img/ScreeFace.png', 'rb')
-                    self.face = fb.read()
-                    fb.close()
-                    self.readSin.emit(self.face)
-                    self.face = None
+            print("读取文件!")
+            fb = open('../faceID/img/ScreeFace.png', 'rb')
+            self.face = fb.read()
+            fb.close()
+            self.readSin.emit(self.face)
         except Exception as ex:
             print("读取文件异常! 位置:ReadFace->run", ex)
 
