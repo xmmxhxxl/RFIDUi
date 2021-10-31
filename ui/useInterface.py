@@ -15,20 +15,36 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(845, 531)
-        Form.setStyleSheet("    /*background-color:rgb(220, 220, 220);")
+        Form.setStyleSheet("/*background-color:rgb(220, 220, 220);")
         self.priceButton_2 = QtWidgets.QPushButton(Form)
         self.priceButton_2.setGeometry(QtCore.QRect(560, 420, 191, 61))
-        self.priceButton_2.setStyleSheet("    border-radius: 10px;  \n"
-"     border: 2px groove white;\n"
-"    background-color:rgb(229, 229, 229);")
+        self.priceButton_2.setStyleSheet("QPushButton\n"
+"{\n"
+"    font-family:Microsoft Yahei;\n"
+"    color:white;\n"
+"    background-color:rgb(79, 125, 163);\n"
+"    border-radius:5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"    background-color:rgb(127, 161, 190);\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"    background-color:rgb(14 , 135 , 228);\n"
+"    padding-left:3px;\n"
+"    padding-top:3px;\n"
+"}")
         self.priceButton_2.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/image/arc.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/image/quren.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.priceButton_2.setIcon(icon)
         self.priceButton_2.setObjectName("priceButton_2")
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(12, 22, 441, 491))
-        self.label.setStyleSheet("    border-radius: 10px;  \n"
+        self.label.setStyleSheet(" border-radius: 10px;  \n"
 "     border: 2px groove white;")
         self.label.setText("")
         self.label.setObjectName("label")
@@ -54,8 +70,9 @@ class Ui_Form(object):
         self.stu_id = QtWidgets.QTextEdit(self.widget)
         self.stu_id.setStyleSheet("    border-radius: 10px;  \n"
 "     border: 2px groove white;\n"
-"    font: 10pt \"宋体\";")
+"    font: 17pt \"宋体\";")
         self.stu_id.setObjectName("stu_id")
+        self.stu_id.setFocusPolicy(QtCore.Qt.NoFocus)   #禁止编辑
         self.horizontalLayout.addWidget(self.stu_id)
         self.verticalLayout.addLayout(self.horizontalLayout)
         spacerItem = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -76,8 +93,9 @@ class Ui_Form(object):
         self.stu_id_2 = QtWidgets.QTextEdit(self.widget)
         self.stu_id_2.setStyleSheet("    border-radius: 10px;  \n"
 "     border: 2px groove white;\n"
-"    font: 10pt \"宋体\";")
+"    font: 17pt \"宋体\";")
         self.stu_id_2.setObjectName("stu_id_2")
+        self.stu_id_2.setFocusPolicy(QtCore.Qt.NoFocus)   #禁止编辑
         self.horizontalLayout_2.addWidget(self.stu_id_2)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         spacerItem1 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -98,8 +116,9 @@ class Ui_Form(object):
         self.stu_id_7 = QtWidgets.QTextEdit(self.widget)
         self.stu_id_7.setStyleSheet("    border-radius: 10px;  \n"
 "     border: 2px groove white;\n"
-"    font: 10pt \"宋体\";")
+"    font: 17pt \"宋体\";")
         self.stu_id_7.setObjectName("stu_id_7")
+        self.stu_id_7.setFocusPolicy(QtCore.Qt.NoFocus)   #禁止编辑
         self.horizontalLayout_7.addWidget(self.stu_id_7)
         self.verticalLayout.addLayout(self.horizontalLayout_7)
         spacerItem2 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -120,8 +139,9 @@ class Ui_Form(object):
         self.stu_id_3 = QtWidgets.QTextEdit(self.widget)
         self.stu_id_3.setStyleSheet("    border-radius: 10px;  \n"
 "     border: 2px groove white;\n"
-"    font: 10pt \"宋体\";")
+"    font: 17pt \"宋体\";")
         self.stu_id_3.setObjectName("stu_id_3")
+        self.stu_id_3.setFocusPolicy(QtCore.Qt.NoFocus)   #禁止编辑
         self.horizontalLayout_3.addWidget(self.stu_id_3)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 

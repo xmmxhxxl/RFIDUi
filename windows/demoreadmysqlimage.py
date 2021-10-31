@@ -11,7 +11,7 @@ try:
                            passwd='root', db='demomysql')
     cursor = conn.cursor()
     cursor.execute("SELECT image FROM image LIMIT 1")
-    fout = open('image.png', 'wb')
+    fout = open('image1.png', 'wb')
     fout.write(cursor.fetchone()[0])
     fout.close()
     cursor.close()

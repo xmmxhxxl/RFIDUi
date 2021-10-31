@@ -24,15 +24,17 @@ class Face():
 
     def get_img(self):
         # 1.读取两张图片数据，整合两张图片 json数据
-        with open("img1.jpg", "rb") as f:
+        with open("../faceID/mysqlDownload/downloadFace.png", "rb") as f:
             pic1 = f.read()
-        with open("img2.jpg", "rb") as f:
+            # print(pic1)
+        with open("../faceID/ScreeFace/ScreeFace.png", "rb") as f:
             pic2 = f.read()
+            # print(base64.b64encode(pic1))
         self.image_data = json.dumps([
             {"image": str(base64.b64encode(pic1), "utf-8"), "image_type": "BASE64"},
             {"image": str(base64.b64encode(pic2), "utf-8"), "image_type": "BASE64"}
         ])
-
+        print(self.image_data)
     def result(self):
         # 2.拼接人脸识别API接口
         get_token = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id={}&client_secret={}".format(
@@ -51,7 +53,9 @@ class Face():
         print(self.response)
 
         score = self.response['result']['score']
+        error_code = self.response['error_code']
         print("相似度为：{}%".format(score))
+        print("错误码为", error_code, type(error_code))
 
     # def face_add(self, gropid, groplist):
     #     image = './img1.jpg'
@@ -61,8 +65,8 @@ class Face():
     #     else:
     #         print("增加失败")
 
+
 if __name__ == '__main__':
     face_score = Face()
     face_score.get_img()
     face_score.result()
-

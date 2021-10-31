@@ -19,16 +19,18 @@ class Face():
         self.APP_ID = '25065352'
         self.APP_KEY = 'gDjVAHz8CkxIvvh4Dii1Nb7C'
         self.SK = 'dVdid50k3xNylRLDh5SsM7zsn0gNV2Pm'
-        self.bas = 'BASE64'
         self.facef = facef  # 第一张人来数据
         self.faces = faces  # 第二张人脸数据
         self.client = AipFace(self.APP_ID, self.APP_KEY, self.SK)
 
     def get_img(self):
+        # print(self.facef)
         self.image_data = json.dumps([
             {"image": str(base64.b64encode(self.facef), "utf-8"), "image_type": "BASE64"},
             {"image": str(base64.b64encode(self.faces), "utf-8"), "image_type": "BASE64"}
         ])
+
+
 
     def result(self):
         # 2.拼接人脸识别API接口
@@ -48,19 +50,14 @@ class Face():
         print(self.response)
 
         score = self.response['result']['score']
-        print("相似度为：{}%".format(score))
+        error_code = self.response['error_code']
+        print("相似度为:{}%".format(score))
+        print("错误码为:", error_code)
 
-        return score
-    # def face_add(self, gropid, groplist):
-    #     image = './img1.jpg'
-    #     result = self.client.addUser(image, 'BASE64', gropid, groplist)
-    #     if result['error_code'] == "0":
-    #         print("增加成功")
-    #     else:
-    #         print("增加失败")
+        return score, error_code
 
 
-if __name__ == '__main__':
-    face_score = Face()
-    face_score.get_img()
-    face_score.result()
+# if __name__ == '__main__':
+#     face_score = Face()
+#     face_score.get_img()
+#     face_score.result()
